@@ -38,7 +38,7 @@ jobs:
           ISSUE_AUTHOR: ${{ github.event.issue.user.login }}
           ISSUE_LABELS: ${{ join(github.event.issue.labels.*.name, ', ') }}
           TO: likwest@outlook.de
-          SMTP_SERVER: ${{ secrets.SMTP_SERVER || 'smtp.office365.com:587' }}
+          SMTP_SERVER: ${{ secrets.SMTP_SERVER || 'smtp-mail.outlook.com:587' }}
           SMTP_USER: ${{ secrets.SMTP_USER || 'likwest@outlook.de' }}
           SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
         run: |
