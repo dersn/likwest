@@ -1,46 +1,99 @@
-# likwest
+<div align="center">
 
-Public bug tracker and feature requests for the likwest apps.
+<img src="assets/likwest.svg" alt="" width="58">
 
-**There is no source code in this repository.** It exists so that reports,
-ideas and their answers are in one place a reader can find, instead of
-scattered across mailboxes.
+# lìkwest
+
+**Bug reports and feature requests**<br>
+for Musaic Studio, Videcho Studio and IPTV Pano.
+
+[**Open an issue**](https://github.com/dersn/likwest/issues/new/choose) &nbsp;·&nbsp;
+[Open issues](https://github.com/dersn/likwest/issues) &nbsp;·&nbsp;
+[likwest.com](https://likwest.com)
+
+</div>
+
+---
+
+**There is no source code in this repository.** It exists so that a report and
+its answer are in one place a reader can find, instead of scattered across
+mailboxes — and so the next person can see their bug is already known instead
+of writing it a second time.
 
 ## The apps
 
-| App | What it is | Website | Download |
-|---|---|---|---|
-| **Musaic Studio** | A multi-layer music-video studio for iPhone. Record a take, layer harmonies and instruments on top, and watch every version of you play together in one frame. | [musaic.likwest.com](https://musaic.likwest.com) | [App Store](https://apps.apple.com/app/musaic-studio/id6772946097) |
-| **Videcho Studio** | Add audio effects to a video you already shot — reverb, echo, EQ — and export. Free. | [videcho.likwest.com](https://videcho.likwest.com) | [App Store](https://apps.apple.com/app/videcho-studio/id6774341898) |
-| **IPTV Pano** | Plays your own IPTV source on every screen you own: M3U, Xtream Codes and Enigma2, live TV with a guide, in sync across Apple, Android, Fire TV, Samsung and LG TVs, and Windows. | [iptv-pano.likwest.com](https://iptv-pano.likwest.com) | Beta — not in any app store yet |
+<table>
+<tr>
+<td width="76" align="center"><img src="assets/musaic.png" alt="" width="60"></td>
+<td>
+
+### [Musaic Studio](https://musaic.likwest.com)
+
+A multi-layer music-video studio for iPhone. Record a take, layer harmonies and
+instruments on top, and watch every version of you play together in one frame.
+
+[App Store](https://apps.apple.com/app/musaic-studio/id6772946097) ·
+[Report a bug](https://github.com/dersn/likwest/issues/new?template=bug-musaic.yml) ·
+[Support](https://musaic.likwest.com/support.html)
+
+</td>
+</tr>
+<tr>
+<td width="76" align="center"><img src="assets/videcho.png" alt="" width="60"></td>
+<td>
+
+### [Videcho Studio](https://videcho.likwest.com)
+
+Add audio effects to a video you already shot — reverb, echo, EQ — and export.
+Free.
+
+[App Store](https://apps.apple.com/app/videcho-studio/id6774341898) ·
+[Report a bug](https://github.com/dersn/likwest/issues/new?template=bug-videcho.yml) ·
+[Support](https://videcho.likwest.com/#feedback)
+
+</td>
+</tr>
+<tr>
+<td width="76" align="center"><img src="assets/iptv-pano.png" alt="" width="60"></td>
+<td>
+
+### [IPTV Pano](https://iptv-pano.likwest.com)
+
+Plays your own IPTV source on every screen you own: M3U, Xtream Codes and
+Enigma2, live TV with a guide, in sync across Apple, Android, Fire TV, Samsung
+and LG TVs, and Windows. **Beta — not in any app store yet.**
+
+[Report a bug](https://github.com/dersn/likwest/issues/new?template=bug-iptv-pano.yml) ·
+[Support](https://iptv-pano.likwest.com/support.html)
+
+</td>
+</tr>
+</table>
 
 ## Report something
 
-[**Open an issue**](../../issues/new/choose) — pick your app, fill in the form.
+| | |
+|---|---|
+| 🐞 | [**Report a bug**](https://github.com/dersn/likwest/issues/new/choose) — pick your app, the form asks for what a fix actually needs |
+| 💡 | [**Request a feature**](https://github.com/dersn/likwest/issues/new?template=idea.yml) — for any of the three apps |
+| 🔎 | [**Search open issues**](https://github.com/dersn/likwest/issues) — a 👍 on an existing report says more than a duplicate |
 
-Before you do, a quick look through [open issues](../../issues) is worth it:
-if someone already reported it, a 👍 on that issue says more than a duplicate.
+## Before you post
 
-**Please do not post in an issue:** playlist URLs, provider credentials,
-account details, or anything else you would not put on a public web page.
-Issues here are visible to everyone. For anything private, use the mail
-address for your app below.
+Issues here are **visible to everyone** and search engines index them.
 
-## Prefer email
+Do not post playlist URLs, provider credentials, account details, or anything
+else you would not put on a public web page. An M3U or Xtream link carries your
+username and password in the query string — posting one is leaking it, and
+deleting the issue afterwards does not take it back.
+
+For anything private, use the mail address for your app:
 
 | | |
 |---|---|
-| Musaic Studio | [musaic@likwest.com](mailto:musaic@likwest.com) · [Support](https://musaic.likwest.com/support.html) |
+| Musaic Studio | [musaic@likwest.com](mailto:musaic@likwest.com) |
 | Videcho Studio | [videcho@likwest.com](mailto:videcho@likwest.com) |
-| IPTV Pano | [pano@likwest.com](mailto:pano@likwest.com) · [Support](https://iptv-pano.likwest.com/support.html) |
-
-## What happens to a report
-
-Every issue is read. A bug that can be reproduced gets a label and lands in
-the plan; one that cannot usually needs a follow-up question, so keep an eye
-on the thread. Feature requests are collected and weighed against each other —
-an issue staying open is not a no, and a closed one is not a verdict on the
-idea, only on this build.
+| IPTV Pano | [pano@likwest.com](mailto:pano@likwest.com) |
 
 These are apps built by one person. Answers can take a few days.
 

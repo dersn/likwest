@@ -1,0 +1,75 @@
+# A short note by mail whenever someone opens an issue.
+#
+# GitHub already emails the repo owner, but at whatever address the GitHub
+# account carries — this sends to one fixed address instead, without touching
+# account-wide notification settings.
+#
+# Needs one repository secret: SMTP_PASSWORD (Settings -> Secrets and variables
+# -> Actions). For Outlook that is an app password, not the account password.
+# Optional secrets SMTP_SERVER / SMTP_USER override the defaults below.
+# Without SMTP_PASSWORD the job logs a warning and passes — it never fails a
+# repository over a missing mail setting.
+#
+# The note carries title, author and link, deliberately not the issue body:
+# a report can contain a pasted playlist URL, and that does not belong in a
+# second place.
+
+name: Notify on new issue
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: read
+
+jobs:
+  mail:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send the note
+        env:
+          # Never interpolate ${{ github.event... }} into `run:` directly —
+          # an issue title is attacker-controlled text and would be executed
+          # as shell. Everything crosses into the script as an env var.
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+          ISSUE_URL: ${{ github.event.issue.html_url }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ISSUE_AUTHOR: ${{ github.event.issue.user.login }}
+          ISSUE_LABELS: ${{ join(github.event.issue.labels.*.name, ', ') }}
+          TO: likwest@outlook.de
+          SMTP_SERVER: ${{ secrets.SMTP_SERVER || 'smtp.office365.com:587' }}
+          SMTP_USER: ${{ secrets.SMTP_USER || 'likwest@outlook.de' }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+        run: |
+          set -euo pipefail
+          if [ -z "${SMTP_PASSWORD:-}" ]; then
+            echo "::warning::SMTP_PASSWORD is not set — no mail sent for #${ISSUE_NUMBER}."
+            exit 0
+          fi
+
+          # Subject lines carry non-ASCII often enough; RFC 2047 encode it.
+          subject_raw="[likwest] #${ISSUE_NUMBER} ${ISSUE_TITLE}"
+          subject="=?UTF-8?B?$(printf '%s' "$subject_raw" | base64 | tr -d '\n')?="
+
+          {
+            printf 'From: likwest issues <%s>\n' "$SMTP_USER"
+            printf 'To: %s\n' "$TO"
+            printf 'Subject: %s\n' "$subject"
+            printf 'Content-Type: text/plain; charset=UTF-8\n'
+            printf 'MIME-Version: 1.0\n'
+            printf '\n'
+            printf '%s\n\n' "$ISSUE_TITLE"
+            printf 'by %s\n' "$ISSUE_AUTHOR"
+            printf 'labels: %s\n\n' "${ISSUE_LABELS:-none}"
+            printf '%s\n' "$ISSUE_URL"
+          } > mail.txt
+
+          curl --silent --show-error --fail --ssl-reqd \
+            --url "smtp://${SMTP_SERVER}" \
+            --user "${SMTP_USER}:${SMTP_PASSWORD}" \
+            --mail-from "${SMTP_USER}" \
+            --mail-rcpt "${TO}" \
+            --upload-file mail.txt
+
+          echo "Note sent for #${ISSUE_NUMBER}."

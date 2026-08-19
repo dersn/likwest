@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="190 90 232 316" role="img" aria-label="likwest">
+  <!-- Dasselbe Zeichen wie in der Navigation: das Grosssegel als offene
+       Kontur. Ein SVG-Favicon darf seine Farbe per media query wechseln,
+       damit es auf hellen und dunklen Tableisten sitzt. -->
+  <style>
+    .m { fill: none; stroke: #4e5464; stroke-width: 34; stroke-linejoin: round; }
+    @media (prefers-color-scheme: dark) { .m { stroke: #c3c9d6; } }
+  </style>
+  <path class="m" d="M 236 104 C 356 168 406 282 408 392 L 204 392 C 244 296 236 196 236 104 Z"/>
+</svg>
