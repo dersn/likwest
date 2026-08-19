@@ -1,8 +1,6 @@
 <div align="center">
 
-<img src="assets/likwest.svg" alt="" width="58">
-
-# lìkwest
+<h1><img src="assets/likwest.svg" alt="" height="26" align="absmiddle">&nbsp; lìkwest</h1>
 
 **Bug reports and feature requests**<br>
 for Musaic Studio, Videcho Studio and IPTV Pano.
