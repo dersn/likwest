@@ -59,8 +59,10 @@ Free.
 
 Plays your own IPTV source on every screen you own: M3U, Xtream Codes and
 Enigma2, live TV with a guide, in sync across Apple, Android, Fire TV, Samsung
-and LG TVs, and Windows. **Beta — not in any app store yet.**
+and LG TVs, and Windows. On the App Store for Apple TV and Mac; iPhone and iPad
+are in review. The other platforms are still in beta.
 
+[App Store](https://apps.apple.com/app/iptv-pano/id6790103399) ·
 [Report a bug](https://github.com/dersn/likwest/issues/new?template=bug-iptv-pano.yml) ·
 [Support](https://iptv-pano.likwest.com/support.html)
 
