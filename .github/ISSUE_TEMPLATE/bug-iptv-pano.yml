@@ -1,0 +1,102 @@
+name: Bug — IPTV Pano
+description: Something in IPTV Pano does not work the way it should.
+labels: ["bug", "app: iptv-pano"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### Never paste a playlist URL or provider credentials here
+
+        Issues are public and search engines index them. An M3U or Xtream URL
+        usually carries your username and password in the query string, and a
+        posted one is a leaked one — even if the issue is deleted later.
+
+        Replace the host and the credentials before you paste anything:
+        `http://example.com/get.php?username=USER&password=PASS`
+
+        For anything that genuinely needs the real values, write to
+        pano@likwest.com instead.
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Where does it happen
+      multiple: true
+      options:
+        - iPhone
+        - iPad
+        - Mac
+        - Apple TV
+        - Android phone or tablet
+        - Android TV / Fire TV
+        - Samsung TV (Tizen)
+        - LG TV (webOS)
+        - Windows
+        - Browser
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      placeholder: Channels from one source play, the ones from a second source show a black screen.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: How to get there
+      description: The steps you took, in order — with the credentials removed.
+      placeholder: |
+        1. Add a second Xtream source
+        2. Import, all channels appear in the list
+        3. Open any channel from that source
+        4. Black screen, sound plays
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected instead
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: App version or build
+      description: Settings → About.
+      placeholder: "0.9.4 (build 212)"
+    validations:
+      required: true
+  - type: input
+    id: os
+    attributes:
+      label: Device and OS version
+      placeholder: Apple TV 4K (3rd gen), tvOS 26.2
+    validations:
+      required: true
+  - type: dropdown
+    id: source-kind
+    attributes:
+      label: Kind of source
+      options:
+        - M3U playlist
+        - Xtream Codes
+        - Enigma2 receiver
+        - Several kinds at once
+        - Not related to a source
+    validations:
+      required: true
+  - type: textarea
+    id: extra
+    attributes:
+      label: Screenshot, screen recording or anything else
+      description: Drag files straight into this box. Blur or crop anything identifying.
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before you send
+      options:
+        - label: I looked through the open issues and this is not one of them.
+          required: true
+        - label: There is no playlist URL, username, password or provider name in what I wrote.
+          required: true

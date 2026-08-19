@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Musaic Studio — support and private questions
+    url: https://musaic.likwest.com/support.html
+    about: Account matters, purchases, or anything you would rather not post publicly.
+  - name: IPTV Pano — support and private questions
+    url: https://iptv-pano.likwest.com/support.html
+    about: Anything involving your sources, credentials or account.
+  - name: Videcho Studio — support
+    url: mailto:videcho@likwest.com
+    about: Write directly.

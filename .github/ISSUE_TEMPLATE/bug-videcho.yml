@@ -1,0 +1,79 @@
+name: Bug — Videcho Studio
+description: Something in Videcho Studio does not work the way it should.
+labels: ["bug", "app: videcho"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Issues here are public. Do not paste account details or anything
+        you would not put on a web page — write to videcho@likwest.com instead.
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: The short version first, then the detail.
+      placeholder: The reverb is audible in the preview but not in the exported file.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: How to get there
+      description: |
+        The steps you took, in order. This is the part that decides whether
+        a bug can be fixed — a report that cannot be reproduced usually
+        cannot be fixed either.
+      placeholder: |
+        1. Import a clip shot on the iPhone camera
+        2. Turn on Reverb, set it to Hall
+        3. Play the preview - the effect is there
+        4. Export - it is gone
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected instead
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: App version
+      description: Settings → About. Please give the exact number.
+      placeholder: "1.4.2"
+    validations:
+      required: true
+  - type: input
+    id: device
+    attributes:
+      label: Device and iOS version
+      placeholder: iPhone 15 Pro, iOS 26.2
+    validations:
+      required: true
+  - type: dropdown
+    id: source
+    attributes:
+      label: Where the clip came from
+      options:
+        - Shot with the iPhone camera
+        - Imported from Photos
+        - Imported from Files or iCloud Drive
+        - A screen recording
+        - Somewhere else
+    validations:
+      required: true
+  - type: textarea
+    id: extra
+    attributes:
+      label: Screenshot, screen recording or anything else
+      description: Drag files straight into this box.
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before you send
+      options:
+        - label: I looked through the open issues and this is not one of them.
+          required: true
+        - label: There is nothing private in what I wrote above.
+          required: true

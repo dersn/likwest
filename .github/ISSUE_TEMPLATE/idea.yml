@@ -1,0 +1,37 @@
+name: Idea or feature request
+description: Something you would like an app to be able to do.
+labels: ["idea"]
+body:
+  - type: dropdown
+    id: app
+    attributes:
+      label: Which app
+      options:
+        - Musaic Studio
+        - Videcho Studio
+        - IPTV Pano
+        - More than one of them
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What would you like to do
+      description: Describe it as the thing you want to achieve, not as the button you imagine.
+      placeholder: I want to keep playing after the loop ends without stopping the recording.
+    validations:
+      required: true
+  - type: textarea
+    id: today
+    attributes:
+      label: What do you do today instead
+      description: |
+        The workaround you use now, or the point at which you give up. This
+        says more about how much an idea is worth than the idea itself does.
+    validations:
+      required: true
+  - type: textarea
+    id: extra
+    attributes:
+      label: Anything else
+      description: Sketches, references to how another app solves it, a screenshot.
