@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+# In dieses Repo kommt kein Quellcode. Nie.
+#
+# Es ist der öffentliche Meldungs-Tracker für Musaic, Videcho und IPTV Pano.
+# Die Apps sind closed-source; ihr Code lebt im privaten dersn/platform. Was
+# hier landet, ist für immer öffentlich — ein Push lässt sich zurücknehmen,
+# eine Veröffentlichung nicht: GitHub-Events, Forks, Suchmaschinen und
+# Trainingsdaten haben die Datei dann schon.
+#
+# Deshalb eine Positivliste, keine Sperrliste. Was nicht ausdrücklich erlaubt
+# ist, ist verboten — eine Sperrliste vergisst immer eine Dateiendung.
+#
+# Aktiv über `git config core.hooksPath .githooks` (siehe CLAUDE.md).
+# Umgehbar mit --no-verify. Wer das tut, tut es absichtlich.
+
+set -euo pipefail
+
+allowed() {
+  case "$1" in
+    README.md|CLAUDE.md|LICENSE|.gitignore)            return 0 ;;
+    .github/ISSUE_TEMPLATE/*.yml|.github/*.md)         return 0 ;;
+    .github/workflows/*.yml)                           return 0 ;;
+    .githooks/*)                                       return 0 ;;
+    assets/*.png|assets/*.svg|assets/*.jpg|assets/*.webp) return 0 ;;
+    *)                                                 return 1 ;;
+  esac
+}
+
+bad=()
+while IFS= read -r f; do
+  [ -n "$f" ] || continue
+  allowed "$f" || bad+=("$f")
+done < <(git diff --cached --name-only --diff-filter=ACMR)
+
+if [ ${#bad[@]} -gt 0 ]; then
+  cat >&2 <<MSG
+
+  ABGEBROCHEN — in dersn/likwest gehört kein Code.
+
+  Diese Dateien stehen nicht auf der Positivliste:
+MSG
+  printf '    %s\n' "${bad[@]}" >&2
+  cat >&2 <<'MSG'
+
+  Erlaubt sind nur: README.md, CLAUDE.md, LICENSE, .gitignore,
+  .github/ISSUE_TEMPLATE/*.yml, .github/*.md, .github/workflows/*.yml,
+  .githooks/*, assets/*.{png,svg,jpg,webp}
+
+  Quellcode gehört ins private dersn/platform. Dieses Repo ist öffentlich:
+  was hier einmal drin war, ist draußen — auch nach einem force-push.
+
+MSG
+  exit 1
+fi

@@ -1,0 +1,44 @@
+# Serverseitige Fassung der einen Regel: hier kommt kein Quellcode rein.
+#
+# Der lokale .githooks/pre-commit greift nur dort, wo er eingerichtet ist.
+# Ein Commit über die GitHub-Weboberfläche, aus einem frischen Klon oder mit
+# --no-verify geht daran vorbei. Diese Prüfung nicht.
+
+name: Kein Code in diesem Repo
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  allowlist:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Jede Datei gegen die Positivliste prüfen
+        run: |
+          set -euo pipefail
+          bad=0
+          while IFS= read -r f; do
+            case "$f" in
+              README.md|CLAUDE.md|LICENSE|.gitignore) ;;
+              .github/ISSUE_TEMPLATE/*.yml|.github/*.md) ;;
+              .github/workflows/*.yml) ;;
+              .githooks/*) ;;
+              assets/*.png|assets/*.svg|assets/*.jpg|assets/*.webp) ;;
+              *) echo "::error file=$f::$f steht nicht auf der Positivliste"; bad=1 ;;
+            esac
+          done < <(git ls-files)
+
+          if [ "$bad" -ne 0 ]; then
+            echo
+            echo "In dersn/likwest gehoert kein Quellcode. Erlaubt sind nur"
+            echo "README/CLAUDE/LICENSE/.gitignore, .github/**, .githooks/* und"
+            echo "Bilder unter assets/. Siehe CLAUDE.md."
+            exit 1
+          fi
+          echo "Alle $(git ls-files | wc -l | tr -d ' ') Dateien sind erlaubt."
